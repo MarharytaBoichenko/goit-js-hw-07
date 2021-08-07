@@ -19,14 +19,34 @@ const images = [
 
 // Все элементы галереи должны добавляться в DOM за одну операцию вставки.
 
-const galeryList = document.querySelector("#gallery")
-console.log(galeryList);
+const galleryList = document.querySelector("#gallery")
+
+const createGallery = images => {
+ return  images.map(image => { return `<li><img src = ${image.url}  alt= '${image.alt}' width = 200 ></li>` }).join("");
+}
+
+console.log(createGallery(images));
+const stringImages = createGallery(images)
+
+galleryList.insertAdjacentHTML("afterbegin", stringImages);
 
 
-const makeGalleryItem = images.map(({ url, alt }) => {
-  return `<li><img src=${url} alt='${alt}' width=300 ></li>`
 
-}).join(" ")
-console.log(makeGalleryItem);
 
-galeryList.insertAdjacentHTML("beforeend", makeGalleryItem);
+
+
+
+
+
+
+// const galeryList = document.querySelector("#gallery")
+// console.log(galeryList);
+
+
+// const makeGalleryItem = images.map(({ url, alt }) => {
+//   return `<li><img src=${url} alt='${alt}' width=300 ></li>`
+
+// }).join(" ")
+// console.log(makeGalleryItem);
+
+// galeryList.insertAdjacentHTML("beforeend", makeGalleryItem);

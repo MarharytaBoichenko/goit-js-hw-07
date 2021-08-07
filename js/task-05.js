@@ -1,27 +1,53 @@
-// Напиши скрипт который, при наборе текста в инпуте input#name - input
-//     (событие input), подставляет его текущее значение в span#name - output.
-// Если инпут пустой, в спане должна отображаться строка 'незнакомец'.
-
-{/* <input type="text" placeholder="Ваше имя?" id="name-input" />
-<h1>Привет, <span id="name-output">незнакомец</span>!</h1> */}
 
 const refs = {
-    input: document.querySelector("#name-input"),
-    output: document.querySelector("#name-output"),
-}
+    inputEl: document.querySelector("#name-input"),
+    spanEl: document.querySelector("#name-output"),
+};
 
-console.log(refs.input);
-console.log(refs.output);
+console.log(refs.inputEl);
+console.log(refs.spanEl);
 
-refs.input.addEventListener("input", onInputChange)
+refs.inputEl.addEventListener("input", onInputChange);
+
 
 function onInputChange(event) {
-    if (event.currentTarget.value !== "") {
-       refs.output.textContent = event.currentTarget.value; 
-    } else {
-       refs.output.textContent === "незнакомец" 
-    }
+    console.log(event.currentTarget);
+    console.log(event.currentTarget.value);
+ 
+refs.spanEl.textContent = event.currentTarget.value.trim() ? event.currentTarget.value.trim() : "незнакомец";
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const refs = {
+//     input: document.querySelector("#name-input"),
+//     output: document.querySelector("#name-output"),
+// }
+
+// console.log(refs.input);
+// console.log(refs.output);
+
+// refs.input.addEventListener("input", onInputChange)
+
+// function onInputChange(event) {
+//     if (event.currentTarget.value !== "") {
+//        refs.output.textContent = event.currentTarget.value; 
+//     } else {
+//        refs.output.textContent === "незнакомец" 
+//     }
     
-} 
+// } 
 // не нужна ли какая проверка на это ??
 // Если инпут пустой, в спане должна отображаться строка 'незнакомец'.  

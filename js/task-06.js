@@ -1,40 +1,35 @@
-// Напиши скрипт, который бы при потере фокуса на инпуте, проверял
-// его содержимое на правильное количество символов.
 
-{/* <input
-  type="text"
-  id="validation-input"
-  data-length="6"
-  placeholder="Введи 6 символов"
-/> */}
-   // Сколько символов должно быть в инпуте, указывается в его атрибуте
-// data - length.
-// Если введено подходящее количество, то border инпута становится
-// зеленым, если неправильное - красным.
-// Для добавления стилей, используй CSS-классы valid и invalid.
+const inputEl = document.querySelector("#validation-input");
+console.log(inputEl);
 
-const input = document.querySelector("#validation-input")
-console.log(input);
-console.log(input.dataset.length);
+inputEl.addEventListener("blur", onInputBlur);
 
-input.addEventListener("blur", e => {
-    console.log(e.currentTarget.value);
-    console.log(typeof e.currentTarget.value.length);
-    console.log(typeof Number(e.currentTarget.dataset.length));
-    console.log(e.currentTarget.value.length === Number(e.currentTarget.dataset.length));
+function onInputBlur(event) {
+    // console.log(event.currentTarget.value.length);
+    // console.log(typeof event.currentTarget.value.length);
+    // console.log(inputEl.dataset.length);
+    // console.log(typeof Number(inputEl.dataset.length));
+    const { value, dataset } = event.currentTarget;
 
-    if (e.currentTarget.value.length !== Number(e.currentTarget.dataset.length)) {
-        e.currentTarget.classList.add('invalid');
-       
-    } else {
-        if (e.currentTarget.classList.contains('invalid')) {
-            e.currentTarget.classList.add('valid');
-            e.currentTarget.classList.remove("invalid");
-        }
+    if (value.length === Number(dataset.length) && !event.currentTarget.classList.contains("invalid")){
+        event.currentTarget.classList.add("valid");
     }
-        
-        }
+    if ((value.length === Number(dataset.length) && event.currentTarget.classList.contains("invalid"))) {
+        event.currentTarget.classList.replace("invalid", "valid");
+    }
+     if(value.length !== Number(dataset.length) && !event.currentTarget.classList.contains("valid")){
+        event.currentTarget.classList.add("invalid");
+     }
+     if(value.length !== Number(dataset.length) && event.currentTarget.classList.contains("valid")){
+        event.currentTarget.classList.replace("valid", "invalid");
+    }
     
-    
+}
 
-);
+
+
+
+
+
+
+
