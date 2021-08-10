@@ -12,15 +12,13 @@ console.log(refs.incrBtn);
 refs.decrBtn.addEventListener("click", onBtnDecrement);
 refs.incrBtn.addEventListener("click", onBtnIncrement);
 
-function onBtnIncrement() {
-    let val = Number(refs.counterValue.textContent);
-    console.log(val);
+let val = Number(refs.counterValue.textContent);
+    
+function onBtnIncrement() {   
     refs.counterValue.textContent = val += 1;
 };
 
 function onBtnDecrement() {
-    let val = Number(refs.counterValue.textContent);
-    console.log(val);
     refs.counterValue.textContent = val -= 1;
 };
 
